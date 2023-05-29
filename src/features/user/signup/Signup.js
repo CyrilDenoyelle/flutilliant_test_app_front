@@ -19,7 +19,7 @@ function Signup() {
       throw new Error("Erreur lors de l'inscription");
     } catch (error) {
       console.error(error);
-      setAlert('echec de l\'inscription')
+      setAlert('echec de l\'inscription');
     }
   };
 
