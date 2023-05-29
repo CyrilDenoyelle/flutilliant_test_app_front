@@ -1,9 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
+import { useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+import Signup from "./features/user/signup/Signup";
+import Login from "./features/user/login/Login";
+import { fetchInitialState } from "./features/user/userSlice";
+
 import './App.css';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchInitialState());
+  }, [dispatch]);
+
   return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </Router>
   );
 }
 
