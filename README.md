@@ -23,6 +23,9 @@ like: "http://{HOST}:{PORT}", no / at the end
 
     $ npm run dev
 
+Then you have to open the "On Your Network:" link
+
+Because the backend is using cookies, and so connection won't work on localhost without ssl certificate
 
 # Getting Started with Create React App and Redux
 
