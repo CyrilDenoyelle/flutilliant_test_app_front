@@ -1,3 +1,29 @@
+# Frontend for "commercial reports app"
+
+Platform for commercials to fill out a report form after each visit to a customer.
+The commercial director of the company has an interface allowing him to visualize by a graph the sales and turnover achieved by his team.
+
+## Install
+you need first to install and run the backend project: https://github.com/CyrilDenoyelle/flutilliant_test_app_back
+
+then you can run:
+
+    $ npm install
+
+## Configure app
+
+Duplicate and rename `.env.example` remove .example
+then edit it with your settings. You will need:
+
+- REACT_APP_API_BASE_URL your backend base url
+
+like: "http://{HOST}:{PORT}", no / at the end
+
+## Running the project
+
+    $ npm run dev
+
+
 # Getting Started with Create React App and Redux
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
