@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { connectUser } from '../userSlice';
 import { login } from "./loginAPI";
@@ -19,7 +19,7 @@ function Login() {
       const user = await login(email, password);
       if (user) {
         dispatch(connectUser(user));
-        navigate("/");
+        navigate("/reports/new");
         return
       }
       throw new Error('echec de connection');

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { sendReport } from '../reportAPI';
+import { sendReport } from './reportFormAPI';
 
 const ReportForm = () => {
 

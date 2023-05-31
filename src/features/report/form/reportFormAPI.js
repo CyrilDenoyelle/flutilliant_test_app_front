@@ -7,7 +7,7 @@ export const sendReport = async (body) => {
     const response = await axios.post(`${REACT_APP_API_BASE_URL}/reports/create`, body);
     return response.data;
   } catch (error) {
-    console.error("Erreur lors de la connection :", error);
+    console.error("Erreur lors de l'envoi du formulaire :", error);
     return false;
   }
 }
