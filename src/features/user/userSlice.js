@@ -25,11 +25,9 @@ export const userSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchInitialState.fulfilled, (state, action) => {
-        console.log('fetchInitialState.fulfilled', action.payload)
         return action.payload;
       })
       .addCase(fetchInitialState.rejected, (state, action) => {
-        console.log('fetchInitialState.rejected', action.payload)
         state.error = action.error.message;
         return state
       });
