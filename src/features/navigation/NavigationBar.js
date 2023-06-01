@@ -1,6 +1,6 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 
 import { disconectUser } from '../user/userSlice';
@@ -8,7 +8,6 @@ import { disconectUser } from '../user/userSlice';
 function NavigationBar() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const location = useLocation()
 
   const [collapsed, setCollapsed] = useState(true);
   const handleToggle = () => {
@@ -20,18 +19,6 @@ function NavigationBar() {
     dispatch(disconectUser());
     navigate('/login');
   }
-
-  useEffect(() => {
-    if (!user) {
-      if (!['/login', '/signup'].includes(location.pathname)) {
-        navigate('/login')
-      }
-    } else {
-      if (['/login', '/signup'].includes(location.pathname)) {
-        navigate('/reports')
-      }
-    }
-  }, [dispatch, location.pathname, user, navigate]);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">

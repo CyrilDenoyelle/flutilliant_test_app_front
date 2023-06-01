@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import Signup from "./features/user/signup/Signup";
 import Login from "./features/user/login/Login";
@@ -12,14 +12,34 @@ import { fetchInitialState } from "./features/user/userSlice";
 import './App.css';
 
 function App() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const location = useLocation()
+
+  const user = useSelector((state) => state.user);
 
   useEffect(() => {
-    dispatch(fetchInitialState());
-  }, [dispatch]);
+
+    const init = async () => {
+      await dispatch(fetchInitialState());
+
+      if (!user) {
+        if (!['/login', '/signup'].includes(location.pathname)) {
+          navigate('/login')
+        }
+      } else {
+        if (['/login', '/signup'].includes(location.pathname)) {
+          navigate('/')
+        }
+      }
+
+    }
+    init();
+
+  }, [dispatch, location.pathname]);
 
   return (
-    <Router>
+    <>
       <NavigationBar />
       <Routes>
         <Route path="/" element={<Login />} />
@@ -27,7 +47,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/reports/new" element={<ReportForm />} />
       </Routes>
-    </Router>
+    </>
   );
 }
 
