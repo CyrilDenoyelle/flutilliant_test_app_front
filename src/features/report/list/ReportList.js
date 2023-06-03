@@ -21,7 +21,7 @@ const ReportList = () => {
   }, []);
 
   return (
-    <div>
+    <div className="container">
       <h2>Report List</h2>
       {reports && reports.map((report, index) => (
         <div key={index} className="card mb-3">
