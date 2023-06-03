@@ -4,7 +4,7 @@ const REACT_APP_API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 export const sendReport = async (body) => {
   try {
-    const response = await axios.post(`${REACT_APP_API_BASE_URL}/reports/create`, body);
+    const response = await axios.post(`${REACT_APP_API_BASE_URL}/reports`, body);
     return response.data;
   } catch (error) {
     console.error("Erreur lors de l'envoi du formulaire :", error);
