@@ -7,6 +7,7 @@ import Signup from "./features/user/signup/Signup";
 import Login from "./features/user/login/Login";
 import ReportForm from './features/report/form/ReportForm';
 import NavigationBar from "./features/navigation/NavigationBar";
+import ReportList from './features/report/list/ReportList';
 import { fetchInitialState } from "./features/user/userSlice";
 
 import './App.css';
@@ -42,9 +43,10 @@ function App() {
     <>
       <NavigationBar />
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<ReportList />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/reports" element={<ReportList />} />
         <Route path="/reports/new" element={<ReportForm />} />
       </Routes>
     </>
