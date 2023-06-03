@@ -24,13 +24,11 @@ const ReportList = () => {
     <div className="container">
       <h2>Report List</h2>
       {reports && reports.map((report, index) => (
-        <div key={index} className="card mb-3">
-          <div className="card-body">
-            <ReportItem
-              report={report}
-            />
+        <div key={index}>
+          <ReportItem
+            report={report}
+          />
 
-          </div>
         </div>
       ))}
     </div>
