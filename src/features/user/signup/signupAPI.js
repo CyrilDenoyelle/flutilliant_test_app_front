@@ -9,13 +9,7 @@ export const signup = async (email, password) => {
       email,
       password,
     });
-    if (response.data.success) {
-      localStorage.setItem("xsrfToken", JSON.stringify(response.data.xsrfToken));
-      axios.defaults.headers.common['x-xsrf-token'] = JSON.stringify(response.data.xsrfToken);
-      return true;
-    } else {
-      return false;
-    }
+    return response.data.success;
   } catch (error) {
     console.error("Erreur lors de l'inscription :", error);
     return false;

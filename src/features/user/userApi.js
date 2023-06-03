@@ -17,7 +17,7 @@ export const checkTokenValidity = async () => {
       return false;
     }
   } catch (error) {
-    console.error("Erreur lors de la connection :", error);
+    console.error("Error l'utilisateur n'est plus connecté :", error);
     return false;
   }
 };
