@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import axios from 'axios';
 
 import { checkTokenValidity } from './userApi'
 
@@ -19,6 +20,7 @@ export const userSlice = createSlice({
       return action.payload
     },
     disconectUser: (_) => {
+      axios.defaults.headers.common['x-xsrf-token'] = null;
       return null
     }
   },
