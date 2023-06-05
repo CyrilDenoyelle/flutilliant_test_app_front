@@ -19,7 +19,6 @@ const Report = ({ report }) => {
   const [nextVisitRevenue, setNextVisitRevenue] = useState(report.nextVisitRevenue);
 
   const handleEdit = (field) => {
-    console.log(field);
     setIsEditing(!isEditing)
   };
 
