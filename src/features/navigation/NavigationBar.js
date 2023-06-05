@@ -46,6 +46,9 @@ function NavigationBar() {
                 <li className="nav-item">
                   <Link className="nav-link" to="/reports/new">New Report</Link>
                 </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/reports/chart">Chart</Link>
+                </li>
               </>
             )}
           </ul>

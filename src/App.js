@@ -8,6 +8,7 @@ import Login from "./features/user/login/Login";
 import ReportForm from './features/report/form/ReportForm';
 import NavigationBar from "./features/navigation/NavigationBar";
 import ReportList from './features/report/list/ReportList';
+import ReportChart from './features/report/chart/ReportChart';
 import { fetchInitialState } from "./features/user/userSlice";
 
 import './App.css';
@@ -47,6 +48,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/reports" element={<ReportList />} />
+        <Route path="/reports/chart" element={<ReportChart />} />
         <Route path="/reports/new" element={<ReportForm />} />
       </Routes>
     </>
