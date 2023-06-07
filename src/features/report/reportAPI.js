@@ -12,7 +12,7 @@ export const updateReport = async (report, update) => {
     });
 
     if (response.data.success) {
-      return response.data.user;
+      return response.data.deletedReport;
     } else {
       return false;
     }
