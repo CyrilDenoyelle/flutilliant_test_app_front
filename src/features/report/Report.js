@@ -58,10 +58,8 @@ const Report = ({ report, remove }) => {
     setNextVisitRevenue(report.nextVisitRevenue);
   }, [report]);
 
-
   return (
     <form onSubmit={handleSave}>
-      {report._id}
       <div className="card mb-3">
         <div className="card-body">
           <h5 className="card-title">Rapport</h5>
