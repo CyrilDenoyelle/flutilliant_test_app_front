@@ -43,9 +43,9 @@ const ReportList = () => {
 
   useEffect(() => {
     const fetchReports = async () => {
-      const res = await listReports();
-      if (res.success) {
-        const { reports } = res.data;
+      const data = await listReports();
+      if (data.success) {
+        const { reports } = data;
 
         const visitDates = reports.map(report => new Date(report.visitDate));
         const nextVisitDates = reports.map(report => new Date(report.nextVisitDate));
