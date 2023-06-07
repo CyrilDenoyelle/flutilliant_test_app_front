@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 
-import { updateReport } from './reportAPI';
+import { updateReport, deleteReport } from './reportAPI';
 
 const Report = ({ report }) => {
 
@@ -18,8 +18,12 @@ const Report = ({ report }) => {
   const [nextVisitItems, setNextVisitItems] = useState(report.nextVisitItems);
   const [nextVisitRevenue, setNextVisitRevenue] = useState(report.nextVisitRevenue);
 
-  const handleEdit = (field) => {
+  const handleEdit = () => {
     setIsEditing(!isEditing)
+  };
+
+  const handleDelete = () => {
+    deleteReport(report);
   };
 
   const handleSave = async (e) => {
@@ -54,11 +58,6 @@ const Report = ({ report }) => {
                 readOnly={!isEditing}
                 onChange={(e) => setCustomerName(e.target.value)}
               />
-              <div className="input-group-append">
-                <button type="button" className="btn btn-primary" onClick={() => handleEdit('name')}>
-                  Modifier
-                </button>
-              </div>
             </div>
           </div>
 
@@ -72,11 +71,6 @@ const Report = ({ report }) => {
                 readOnly={!isEditing}
                 onChange={(e) => setCustomerAddress(e.target.value)}
               />
-              <div className="input-group-append">
-                <button type="button" className="btn btn-primary" onClick={() => handleEdit('address')}>
-                  Modifier
-                </button>
-              </div>
             </div>
           </div>
 
@@ -90,11 +84,6 @@ const Report = ({ report }) => {
                 readOnly={!isEditing}
                 onChange={(e) => setCustomerContact(e.target.value)}
               />
-              <div className="input-group-append">
-                <button type="button" className="btn btn-primary" onClick={() => handleEdit('contact')}>
-                  Modifier
-                </button>
-              </div>
             </div>
           </div>
 
@@ -108,11 +97,6 @@ const Report = ({ report }) => {
                 readOnly={!isEditing}
                 onChange={(e) => setVisitDate(e.target.value)}
               />
-              <div className="input-group-append">
-                <button type="button" className="btn btn-primary" onClick={() => handleEdit('visitDate')}>
-                  Modifier
-                </button>
-              </div>
             </div>
           </div>
 
@@ -126,11 +110,6 @@ const Report = ({ report }) => {
                 readOnly={!isEditing}
                 onChange={(e) => setReportBody(e.target.value)}
               />
-              <div className="input-group-append">
-                <button type="button" className="btn btn-primary" onClick={() => handleEdit('reportText')}>
-                  Modifier
-                </button>
-              </div>
             </div>
           </div>
 
@@ -144,11 +123,6 @@ const Report = ({ report }) => {
                 readOnly={!isEditing}
                 onChange={(e) => setOrderedItems(parseInt(e.target.value))}
               />
-              <div className="input-group-append">
-                <button type="button" className="btn btn-primary" onClick={() => handleEdit('numArticles')}>
-                  Modifier
-                </button>
-              </div>
             </div>
           </div>
 
@@ -162,11 +136,6 @@ const Report = ({ report }) => {
                 readOnly={!isEditing}
                 onChange={(e) => setRevenue(parseFloat(e.target.value))}
               />
-              <div className="input-group-append">
-                <button type="button" className="btn btn-primary" onClick={() => handleEdit('revenue')}>
-                  Modifier
-                </button>
-              </div>
             </div>
           </div>
 
@@ -180,11 +149,6 @@ const Report = ({ report }) => {
                 readOnly={!isEditing}
                 onChange={(e) => setNextVisitDate(e.target.value)}
               />
-              <div className="input-group-append">
-                <button type="button" className="btn btn-primary" onClick={() => handleEdit('nextVisitDate')}>
-                  Modifier
-                </button>
-              </div>
             </div>
           </div>
 
@@ -198,11 +162,6 @@ const Report = ({ report }) => {
                 readOnly={!isEditing}
                 onChange={(e) => setNextVisitItems(parseInt(e.target.value))}
               />
-              <div className="input-group-append">
-                <button type="button" className="btn btn-primary" onClick={() => handleEdit('forecastNumArticles')}>
-                  Modifier
-                </button>
-              </div>
             </div>
           </div>
 
@@ -216,16 +175,17 @@ const Report = ({ report }) => {
                 readOnly={!isEditing}
                 onChange={(e) => setNextVisitRevenue(parseFloat(e.target.value))}
               />
-              <div className="input-group-append">
-                <button type="button" className="btn btn-primary" onClick={() => handleEdit('forecastRevenue')}>
-                  Modifier
-                </button>
-              </div>
             </div>
           </div>
 
-          <button type="submit" className="btn btn-danger">
-            Valider tous les champs
+          <button type="button" className="btn btn-primary" onClick={() => handleEdit()}>
+            Modifier
+          </button>
+          <button type="submit" className="btn btn-success">
+            Valider
+          </button>
+          <button type="button" className="btn btn-danger" onClick={() => handleDelete()}>
+            Supprimer
           </button>
         </div>
       </div>

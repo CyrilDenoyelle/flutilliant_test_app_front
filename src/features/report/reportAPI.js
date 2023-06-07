@@ -17,7 +17,23 @@ export const updateReport = async (report, update) => {
       return false;
     }
   } catch (error) {
-    console.error("Erreur lors de la connection :", error);
+    console.error("Erreur lors de l'update :", error);
+    return false;
+  }
+};
+
+// delete report
+export const deleteReport = async (report) => {
+  try {
+    const response = await axios.delete(`${REACT_APP_API_BASE_URL}/reports/${report._id}`);
+
+    if (response.data.success) {
+      return response.data.user;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    console.error("Erreur lors de la suppression :", error);
     return false;
   }
 };
