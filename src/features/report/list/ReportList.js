@@ -8,6 +8,10 @@ const ReportList = () => {
 
   const [reports, setReports] = useState([]);
 
+  const handleDelete = (reportId) => {
+    setReports(reports.filter((report) => report._id !== reportId));
+  };
+
   useEffect(() => {
     const fetchReports = async () => {
       const { reports } = await listReports();
@@ -26,6 +30,7 @@ const ReportList = () => {
         <div key={index}>
           <ReportItem
             report={report}
+            remove={handleDelete}
           />
 
         </div>

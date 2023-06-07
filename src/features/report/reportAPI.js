@@ -28,7 +28,7 @@ export const deleteReport = async (report) => {
     const response = await axios.delete(`${REACT_APP_API_BASE_URL}/reports/${report._id}`);
 
     if (response.data.success) {
-      return response.data.user;
+      return response.data.deletedReport;
     } else {
       return false;
     }

@@ -1,22 +1,22 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { updateReport, deleteReport } from './reportAPI';
 
-const Report = ({ report }) => {
+const Report = ({ report, remove }) => {
 
   const [isEditing, setIsEditing] = useState(false);
 
-  const [customerAddress, setCustomerAddress] = useState(report.customerAddress);
-  const [customerName, setCustomerName] = useState(report.customerName);
-  const [customerContact, setCustomerContact] = useState(report.customerContact);
-  const [visitDate, setVisitDate] = useState(report.visitDate);
-  const [reportBody, setReportBody] = useState(report.reportBody);
-  const [orderedItems, setOrderedItems] = useState(report.orderedItems);
-  const [revenue, setRevenue] = useState(report.revenue);
-  const [nextVisitDate, setNextVisitDate] = useState(report.nextVisitDate);
-  const [nextVisitItems, setNextVisitItems] = useState(report.nextVisitItems);
-  const [nextVisitRevenue, setNextVisitRevenue] = useState(report.nextVisitRevenue);
+  const [customerAddress, setCustomerAddress] = useState('');
+  const [customerName, setCustomerName] = useState('');
+  const [customerContact, setCustomerContact] = useState('');
+  const [visitDate, setVisitDate] = useState('');
+  const [reportBody, setReportBody] = useState('');
+  const [orderedItems, setOrderedItems] = useState('');
+  const [revenue, setRevenue] = useState('');
+  const [nextVisitDate, setNextVisitDate] = useState('');
+  const [nextVisitItems, setNextVisitItems] = useState('');
+  const [nextVisitRevenue, setNextVisitRevenue] = useState('');
 
   const handleEdit = (e) => {
     e.preventDefault();
@@ -24,11 +24,9 @@ const Report = ({ report }) => {
   };
 
   const handleDelete = async () => {
-    const deleteResp = await deleteReport(report);
-    if (deleteResp) {
-      window.location.reload();
-    }
-  };
+    const deletedReport = await deleteReport(report);
+    if (deletedReport) remove(report._id);
+  }
 
   const handleSave = async (e) => {
     e.preventDefault();
@@ -47,8 +45,23 @@ const Report = ({ report }) => {
     });
   }
 
+  useEffect(() => {
+    setCustomerAddress(report.customerAddress);
+    setCustomerName(report.customerName);
+    setCustomerContact(report.customerContact);
+    setVisitDate(report.visitDate);
+    setReportBody(report.reportBody);
+    setOrderedItems(report.orderedItems);
+    setRevenue(report.revenue);
+    setNextVisitDate(report.nextVisitDate);
+    setNextVisitItems(report.nextVisitItems);
+    setNextVisitRevenue(report.nextVisitRevenue);
+  }, [report]);
+
+
   return (
     <form onSubmit={handleSave}>
+      {report._id}
       <div className="card mb-3">
         <div className="card-body">
           <h5 className="card-title">Rapport</h5>
@@ -196,7 +209,7 @@ const Report = ({ report }) => {
                 Modifier
               </button>
           }
-          <button type="button" className="btn btn-danger" onClick={() => handleDelete()}>
+          <button type="button" className="btn btn-danger" onClick={handleDelete}>
             Supprimer
           </button>
         </div>
