@@ -10,10 +10,9 @@ const ReportList = () => {
 
   useEffect(() => {
     const fetchReports = async () => {
-      const reports = await listReports();
-      console.log('reports', reports)
+      const { reports } = await listReports();
       if (reports) {
-        setReports(reports.data.reports);
+        setReports(reports);
       }
     };
 
